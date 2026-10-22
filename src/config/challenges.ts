@@ -159,7 +159,7 @@ export const CHALLENGES: Challenge[] = [
   {
     id: 'bb2', sport: 'baseball', index: 2, name: 'Heat Check',
     goal: 'Catch up to the fastball and rocket it out.',
-    tip: 'Fastballs arrive sooner — tap earlier. Then hold to boost the ball over the deep fence.',
+    tip: 'Fastballs arrive sooner, so tap earlier. Then hold to boost the ball over the deep fence.',
     fuel: 1.8, worldEnd: 170, stars: [2260, 2600], requiresRocket: true,
     pitches: ['fastball'], swingWindow: 0.14,
     objective: { type: 'homerun', x: 128, h: 4 },

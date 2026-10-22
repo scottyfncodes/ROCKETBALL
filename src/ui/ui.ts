@@ -421,7 +421,7 @@ export class UI implements GameUI {
       <h2 class="result-label">${won ? 'CHAMPION!' : 'SO CLOSE'}</h2>
       <div class="result-stars">${[0, 1, 2].map((i) => STAR(i < r.stars, `pop d${i}`)).join('')}</div>
       <div class="result-score"><span class="count" data-to="${t.total}">0</span><small>TRIPLE THREAT TOTAL</small></div>
-      <ul class="breakdown">${t.rounds.map((x, i) => `<li><span>${SPORT_LABEL[TRIPLE_THREAT[i].sport].title} · ${esc(x.label)}</span><b>${x.success ? '+' + fmt(x.total) : '—'}</b></li>`).join('')}</ul>
+      <ul class="breakdown">${t.rounds.map((x, i) => `<li><span>${SPORT_LABEL[TRIPLE_THREAT[i].sport].title} · ${esc(x.label)}</span><b>${x.success ? '+' + fmt(x.total) : '0'}</b></li>`).join('')}</ul>
       <div class="notes">${won ? '' : '<p class="note tip">Win all three rounds in one run to take the championship.</p>'}<p class="note">${fmt(TRIPLE_STARS[0])} / ${fmt(TRIPLE_STARS[1])} points for 2 / 3 stars</p></div>
       <div class="actions"></div>`;
     const notes = card.querySelector('.notes')!;
