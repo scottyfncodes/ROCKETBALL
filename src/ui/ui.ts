@@ -38,6 +38,7 @@ export class UI implements GameUI {
   private resultTimers: number[] = [];
   /** Only move focus automatically for keyboard users (avoids focus rings on touch). */
   private keyboardUser = false;
+  private collectionFrom: 'title' | 'hub' = 'title';
 
   constructor(root: HTMLElement, private store: Store) {
     this.root = root;
@@ -97,14 +98,13 @@ export class UI implements GameUI {
         ${WORDMARK}
         <p class="tagline">Throw a touchdown. Kick a goal. Hit a home run.<br><strong>Then light the rocket.</strong></p>
         <div class="title-actions"></div>
-        <p class="title-foot">Best with sound · Portrait on phones</p>
       </div>`;
     const actions = s.querySelector('.title-actions')!;
     const play = this.button('PLAY', 'primary big', () => this.showHub());
     play.dataset.autofocus = '';
     const row = el('div', 'row');
     row.append(
-      this.button('COLLECTION', 'ghost', () => this.showCollection()),
+      this.button('COLLECTION', 'ghost', () => this.showCollection('title')),
       this.button(this.game.sfx.muted ? `${SOUND_OFF}<span>SOUND OFF</span>` : `${SOUND_ON}<span>SOUND ON</span>`, 'ghost sound-toggle', () => this.toggleMute()),
     );
     actions.append(play, row);
@@ -180,7 +180,7 @@ export class UI implements GameUI {
     const head = el('header', 'hub-head');
     head.append(this.button(BACK, 'icon', () => this.showTitle(), 'Back to title'));
     head.append(el('div', 'hub-stars', `${STAR(true)}<span>${totalStars(save)} / ${MAX_STARS}</span>`));
-    head.append(this.button('COLLECTION', 'ghost small', () => this.showCollection()));
+    head.append(this.button('COLLECTION', 'ghost small', () => this.showCollection('hub')));
     s.append(head);
 
     const tabs = el('nav', 'tabs');
@@ -242,13 +242,14 @@ export class UI implements GameUI {
     start();
   }
 
-  showCollection(): void {
+  showCollection(from: 'title' | 'hub' = this.collectionFrom): void {
+    this.collectionFrom = from;
     this.hud.el.classList.remove('visible');
     const save = this.game.save;
     const s = this.screens.collection;
     s.innerHTML = '';
     const head = el('header', 'hub-head');
-    head.append(this.button(BACK, 'icon', () => (this.game.phase === 'menu' ? this.showHub() : this.showTitle()), 'Back'));
+    head.append(this.button(BACK, 'icon', () => (from === 'hub' ? this.showHub() : this.showTitle()), 'Back'));
     head.append(el('div', 'hub-stars', `${STAR(true)}<span>${totalStars(save)} / ${MAX_STARS}</span>`));
     head.append(el('div', 'spacer'));
     s.append(head);

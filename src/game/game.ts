@@ -1,6 +1,7 @@
 import { CHALLENGES, TRIPLE_ID, TRIPLE_STARS, TRIPLE_THREAT, type Challenge } from '../config/challenges';
 import { cosmeticById } from '../config/cosmetics';
-import { FIXED_DT, MAX_STEPS_PER_FRAME, ROCKET } from '../config/physics';
+import { FIXED_DT, ROCKET } from '../config/physics';
+import { FixedStepper } from '../sim/stepper';
 import { Sfx } from '../audio/audio';
 import { Input, type Touch } from '../input/input';
 import { Camera } from '../render/camera';
@@ -83,7 +84,7 @@ export class Game {
   /** Steering joystick: origin and current pointer. */
   steerUI: { x: number; y: number; cy: number } | null = null;
   private boostTouch: number | null = null;
-  private acc = 0;
+  private stepper = new FixedStepper();
   private slowmo = 0;
   private lastPrompt = '';
   private resultShown = false;
@@ -135,7 +136,7 @@ export class Game {
     this.steerUI = null;
     this.boostTouch = null;
     this.clock = 0;
-    this.acc = 0;
+    this.stepper.reset();
     this.slowmo = 0;
     this.resultShown = false;
     this.paused = false;
@@ -201,7 +202,7 @@ export class Game {
   resume(): void {
     if (!this.paused) return;
     this.paused = false;
-    this.acc = 0;
+    this.stepper.reset();
     // Anything still pressed must be released and pressed again before it counts.
     this.input.consumeAll();
     this.ui.onPauseChange(false);
@@ -321,14 +322,7 @@ export class Game {
     if (!this.paused) {
       const scale = this.slowmo > 0 ? 0.35 : 1;
       this.slowmo = Math.max(0, this.slowmo - dt);
-      this.acc += dt * scale;
-      let n = 0;
-      while (this.acc >= FIXED_DT && n < MAX_STEPS_PER_FRAME) {
-        this.tick();
-        this.acc -= FIXED_DT;
-        n++;
-      }
-      if (n >= MAX_STEPS_PER_FRAME) this.acc = 0;
+      this.stepper.advance(dt * scale, () => this.tick());
       this.fx.update(dt * scale);
       this.updateCamera(dt);
       this.cam.updateShake(dt);
@@ -680,16 +674,14 @@ export class Game {
       this.fx.clear();
     }
     const sim = this.attract;
-    this.acc += dt;
-    while (this.acc >= FIXED_DT) {
-      this.acc -= FIXED_DT;
+    this.stepper.advance(dt, () => {
       const boost = sim.t > 0.7 && sim.t < 2.1;
       sim.step({ boost, steer: Math.sin(sim.t * 2) * 0.5 });
       if (sim.boosting && Math.random() < 0.6) this.emitExhaust(sim);
       this.trail.push({ x: sim.pos.x, y: sim.pos.y, boost: sim.boosting });
       sim.drain();
       if (sim.outcome && sim.t > 6) sim.done = true;
-    }
+    });
     this.cam.scale = this.cam.baseScale() * 0.8;
     this.cam.approach(this.cam.leftFor(sim.pos.x, 0.45), this.cam.scale, dt, 3);
   }

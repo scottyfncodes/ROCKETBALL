@@ -29,7 +29,7 @@ export interface BallPhysics {
 
 export const BALLS: Record<Sport, BallPhysics> = {
   football: { radius: 0.45, drag: 0.0016, magnus: 0, spinDecay: 0, restitution: 0.42, bounceFriction: 0.7, rollFriction: 9 },
-  soccer: { radius: 0.5, drag: 0.0032, magnus: 0.02, spinDecay: 0.12, restitution: 0.55, bounceFriction: 0.7, rollFriction: 11 },
+  soccer: { radius: 0.5, drag: 0.0032, magnus: 0.02, spinDecay: 0.12, restitution: 0.45, bounceFriction: 0.62, rollFriction: 11 },
   baseball: { radius: 0.4, drag: 0.0016, magnus: 0.012, spinDecay: 0.05, restitution: 0.35, bounceFriction: 0.6, rollFriction: 7 },
 };
 

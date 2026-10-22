@@ -34,7 +34,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'fb1', sport: 'football', index: 1, name: 'Rocket Pass',
     goal: 'Land the pass in the end zone.',
     tip: 'Pull back and release to throw. Hold anywhere mid-flight to fire the rocket.',
-    fuel: 1.5, worldEnd: 70, stars: [2050, 2450],
+    fuel: 1.5, worldEnd: 70, stars: [2150, 2480],
     objective: { type: 'endzone', x0: 28, x1: 40 },
     obstacles: [], rings: [],
   },
@@ -42,7 +42,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'fb2', sport: 'football', index: 2, name: 'Afterburner',
     goal: 'The end zone is out of arm range. Boost it there.',
     tip: 'Throw high, then hold to boost near the top of the arc.',
-    fuel: 2.0, worldEnd: 95, stars: [2150, 2500], requiresRocket: true,
+    fuel: 2.0, worldEnd: 95, stars: [2400, 2760], requiresRocket: true,
     objective: { type: 'endzone', x0: 58, x1: 68 },
     obstacles: [], rings: [ring('r1', 44, 13, 1.8, 300)],
   },
@@ -50,7 +50,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'fb3', sport: 'football', index: 3, name: 'Blitz',
     goal: 'Clear the jumping rushers and score.',
     tip: 'Watch the defenders jump. Throw when they drop, or rocket over them.',
-    fuel: 1.8, worldEnd: 90, stars: [2100, 2500],
+    fuel: 1.8, worldEnd: 90, stars: [2350, 2720],
     objective: { type: 'endzone', x0: 50, x1: 60 },
     obstacles: [
       { id: 'd1', style: 'defender', x: 11, y: 0, w: 1.5, h: 4.2, motion: { axis: 'y', amplitude: 1.4, period: 1.7 } },
@@ -62,7 +62,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'fb4', sport: 'football', index: 4, name: 'Thread the Needle',
     goal: 'Hit your receiver in stride. Stay under the drone.',
     tip: 'Lead the receiver. Steer down (drag down) to dive the ball into his hands.',
-    fuel: 1.6, worldEnd: 90, stars: [2200, 2650],
+    fuel: 1.6, worldEnd: 90, stars: [2000, 2290],
     objective: { type: 'endzone', x0: 48, x1: 60, window: { x: 50, y: 1.4, w: 2.4, h: 2.6, motion: { axis: 'x', amplitude: 5, period: 5 } } },
     obstacles: [
       { id: 'd1', style: 'defender', x: 18, y: 0, w: 1.5, h: 4.2, motion: { axis: 'y', amplitude: 1.2, period: 1.5 } },
@@ -75,7 +75,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'fb5', sport: 'football', index: 5, name: 'Hail Mary Rocket',
     goal: 'Ninety metres. Three rushers. One rocket. Thread the ring.',
     tip: 'Throw a high bomb, boost long through the gold ring, then let it fall into the end zone.',
-    fuel: 2.4, worldEnd: 125, stars: [2400, 2900], requiresRocket: true,
+    fuel: 2.4, worldEnd: 125, stars: [2550, 2940], requiresRocket: true,
     objective: { type: 'endzone', x0: 90, x1: 100 },
     obstacles: [
       { id: 'd1', style: 'defender', x: 14, y: 0, w: 1.5, h: 4.2, motion: { axis: 'y', amplitude: 1.6, period: 1.6 } },
@@ -91,7 +91,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'sc1', sport: 'soccer', index: 1, name: 'Open Net',
     goal: 'Swipe to kick it into the goal.',
     tip: 'Swipe from the ball toward the goal. Longer swipe = harder kick.',
-    fuel: 1.2, worldEnd: 60, stars: [1700, 2150],
+    fuel: 1.2, worldEnd: 60, stars: [2100, 2400],
     objective: { type: 'goal', x: 24, height: 4.5, depth: 2.2 },
     obstacles: [goalFrame(24)], rings: [],
   },
@@ -99,7 +99,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'sc2', sport: 'soccer', index: 2, name: 'Over the Wall',
     goal: 'Bend it over the wall and under the bar.',
     tip: 'Curve your swipe like a rainbow to put topspin on it. It will dip late.',
-    fuel: 1.4, worldEnd: 70, stars: [1900, 2350],
+    fuel: 1.4, worldEnd: 70, stars: [2280, 2630],
     objective: { type: 'goal', x: 30, height: 4.5, depth: 2.2 },
     obstacles: [{ id: 'wall', style: 'wall', x: 9, y: 0, w: 1.0, h: 2.8 }, goalFrame(30)],
     rings: [ring('r1', 18, 6.5, 1.6, 300)],
@@ -108,7 +108,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'sc3', sport: 'soccer', index: 3, name: "Keeper's Reach",
     goal: 'Beat the diving keeper. Top corner pays.',
     tip: 'The keeper jumps on a rhythm. Aim above his gloves and boost down into the corner.',
-    fuel: 1.6, worldEnd: 80, stars: [2150, 2550],
+    fuel: 1.6, worldEnd: 80, stars: [2400, 2770],
     objective: { type: 'goal', x: 38, height: 4.5, depth: 2.2 },
     obstacles: [
       { id: 'wall', style: 'wall', x: 11, y: 0, w: 1.0, h: 2.8 },
@@ -121,7 +121,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'sc4', sport: 'soccer', index: 4, name: 'Long Range Rocket',
     goal: 'Score from 64 metres. Your leg cannot do it alone.',
     tip: 'Kick high and long, ignite near the top, and steer down under the bar.',
-    fuel: 2.2, worldEnd: 100, stars: [2150, 2600], requiresRocket: true,
+    fuel: 2.2, worldEnd: 100, stars: [2250, 2580], requiresRocket: true,
     objective: { type: 'goal', x: 64, height: 4.5, depth: 2.2 },
     obstacles: [
       { id: 'wall', style: 'wall', x: 10, y: 0, w: 1.0, h: 2.8 },
@@ -135,7 +135,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'sc5', sport: 'soccer', index: 5, name: 'The Bender',
     goal: 'Over the wall, under the sign, through the ring, into the net.',
     tip: 'Topspin the kick so it drops under the sign, then boost up through the ring.',
-    fuel: 1.9, worldEnd: 90, stars: [2300, 2750],
+    fuel: 1.9, worldEnd: 90, stars: [2480, 2860], requiresRocket: true,
     objective: { type: 'goal', x: 46, height: 4.5, depth: 2.2 },
     obstacles: [
       { id: 'wall', style: 'wall', x: 9, y: 0, w: 1.0, h: 2.8 },
@@ -151,7 +151,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'bb1', sport: 'baseball', index: 1, name: 'Batting Practice',
     goal: 'Time your swing and clear the fence.',
     tip: 'Tap as the ball reaches the plate. Tap the upper half to lift, the lower half to drive.',
-    fuel: 1.5, worldEnd: 140, stars: [1900, 2300],
+    fuel: 1.5, worldEnd: 140, stars: [1950, 2240],
     pitches: ['meatball'], swingWindow: 0.17,
     objective: { type: 'homerun', x: 80, h: 3 },
     obstacles: [fence(80, 3)], rings: [],
@@ -160,7 +160,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'bb2', sport: 'baseball', index: 2, name: 'Heat Check',
     goal: 'Catch up to the fastball and rocket it out.',
     tip: 'Fastballs arrive sooner — tap earlier. Then hold to boost the ball over the deep fence.',
-    fuel: 1.8, worldEnd: 170, stars: [2050, 2450], requiresRocket: true,
+    fuel: 1.8, worldEnd: 170, stars: [2260, 2600], requiresRocket: true,
     pitches: ['fastball'], swingWindow: 0.14,
     objective: { type: 'homerun', x: 128, h: 4 },
     obstacles: [fence(128, 4)], rings: [ring('r1', 70, 24, 2.2, 300)],
@@ -169,7 +169,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'bb3', sport: 'baseball', index: 3, name: 'Billboard Bash',
     goal: 'Smash the ROCKETBALL billboard above the bleachers.',
     tip: 'Drive it on a line, then steer up into the board. Going over it is a miss.',
-    fuel: 1.8, worldEnd: 150, stars: [2050, 2450],
+    fuel: 1.8, worldEnd: 150, stars: [1780, 2050],
     pitches: ['changeup', 'curveball'], swingWindow: 0.13,
     objective: { type: 'billboard', targetId: 'board', x: 84, y: 22, w: 2, h: 7 },
     obstacles: [fence(96, 4), { id: 'board', style: 'billboard', x: 84, y: 22, w: 2, h: 7, bounce: 0.3 }],
@@ -179,7 +179,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'bb4', sport: 'baseball', index: 4, name: 'The Monster',
     goal: 'Clear the 16-metre Monster wall.',
     tip: 'Lift it, ignite early and steer up. Save fuel for the climb at the end.',
-    fuel: 1.7, worldEnd: 160, stars: [2150, 2550],
+    fuel: 1.7, worldEnd: 160, stars: [2230, 2570],
     pitches: ['changeup', 'fastball', 'curveball'], swingWindow: 0.13,
     objective: { type: 'homerun', x: 92, h: 16 },
     obstacles: [fence(92, 16)], rings: [ring('r1', 60, 25, 2.0, 400)],
@@ -188,7 +188,7 @@ export const CHALLENGES: Challenge[] = [
     id: 'bb5', sport: 'baseball', index: 5, name: 'Moonshot',
     goal: 'Hit the moon ring, dodge the blimp, leave the park.',
     tip: 'Perfect contact, then a long steady burn. Steer around the blimp into the ring.',
-    fuel: 2.2, worldEnd: 220, stars: [2500, 2950], requiresRocket: true,
+    fuel: 2.2, worldEnd: 220, stars: [2550, 2930], requiresRocket: true,
     pitches: ['heater', 'curveball', 'heater'], swingWindow: 0.12,
     objective: { type: 'homerun', x: 135, h: 6 },
     obstacles: [fence(135, 6), { id: 'blimp', style: 'drone', x: 78, y: 26, w: 12, h: 4, motion: { axis: 'y', amplitude: 4, period: 4 } }],
@@ -236,7 +236,7 @@ export const TRIPLE_THREAT: Challenge[] = [
 ];
 
 /** Total score thresholds for 2 and 3 stars in the Triple Threat. */
-export const TRIPLE_STARS: [number, number] = [6600, 7600];
+export const TRIPLE_STARS: [number, number] = [6700, 7700];
 export const TRIPLE_ID = 'triple';
 
 export const challengesFor = (sport: Sport): Challenge[] => CHALLENGES.filter((c) => c.sport === sport);

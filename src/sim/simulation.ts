@@ -224,6 +224,9 @@ export class FlightSim {
     }
     if (this.course.sport === 'football' && (style === 'defender' || style === 'lineman' || style === 'drone')) {
       this.fail('DEFLECTED!');
+    } else if (style === 'keeper') {
+      // Arcade rule: any keeper touch is a save.
+      this.fail('SAVED!');
     }
   }
 
