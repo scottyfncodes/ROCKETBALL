@@ -39,7 +39,7 @@ export function describeMiss(ch: Challenge, sim: FlightSim | null): string | nul
     case 'goal':
       if (sim.hits.includes('keeper')) return 'The keeper got it. Go higher than his gloves.';
       if (sim.hits.includes('wall')) return 'Blocked by the wall. Kick higher or add dip.';
-      if (sim.maxHeight > o.height && at.x > o.x) return `Over the bar — keep it under ${o.height} m at the goal line.`;
+      if (sim.maxHeight > o.height && at.x > o.x) return `Over the bar. Keep it under ${o.height} m at the goal line.`;
       return `Stopped at ${m(at.x)}. The goal is at ${m(o.x)}.`;
     case 'homerun':
       if (sim.hits.includes('wall')) return `Hit the wall. You need more than ${m(o.h)} of height at ${m(o.x)}.`;
