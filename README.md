@@ -50,7 +50,7 @@ Simulation is separated from presentation: `FlightSim` knows nothing about the D
 ```bash
 npm run typecheck
 npm run lint
-npm test           # 80 unit tests, ~30 s (includes solving every challenge)
+npm test           # 81 unit tests, ~30 s (includes solving every challenge)
 npm run build && npm run e2e   # browser smoke test (needs Chromium; set CHROMIUM_PATH if needed)
 npm run check      # typecheck + lint + test + build
 npx vite-node scripts/tune.ts  # full solver sweep: best bot score per challenge vs star thresholds
